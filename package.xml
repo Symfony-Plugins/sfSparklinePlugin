@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sfSparklinePlugin</name>
+ <channel>plugins.symfony-project.org</channel>
+ <summary>sfSparklinePlugin provides you with lib to use Sparklines.</summary>
+ <description>sfSparklinePlugin provides you with lib to use Sparklines.</description>
+ <lead>
+  <name>Tomasz Ducin</name>
+  <user>tkoomzaaskz</user>
+  <email>tomasz.ducin@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2009-12-13</date>
+ <time>11:00:00</time>
+ <version>
+   <release>1.0.0</release>
+   <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.symfony-project.org/license">MIT license</license>
+ <notes>-</notes>
+ <contents>
+   <dir name="/">
+
+     <file role="data" name="README" />
+     <file role="data" name="LICENSE" />
+
+     <dir name="config">
+       <file role="data" name="routing.yml" />
+     </dir>
+
+     <dir name="lib">
+
+       <dir name="sparkline">
+         <file role="data" name="Object.php" />
+         <file role="data" name="Sparkline.php" />
+         <file role="data" name="Sparkline_Bar.php" />
+         <file role="data" name="Sparkline_Line.php" />
+         <file role="data" name="LICENSE" />
+         <file role="data" name="README" />
+       </dir>
+
+       <file role="data" name="sfMixer.class.php" />
+       <file role="data" name="sfBaseSparkline.class.php" />
+       <file role="data" name="sfSparkline.class.php" />
+       <file role="data" name="sfSparklineBar.class.php" />
+       <file role="data" name="sfSparklineLine.class.php" />
+
+     </dir>
+
+     <dir name="modules">
+       <dir name="sfSparklineExample">
+         <dir name="actions">
+           <file role="data" name="actions.class.php" />
+         </dir>
+         <dir name="templates">
+           <file role="data" name="indexSuccess.php" />
+         </dir>
+       </dir>
+     </dir>
+
+   </dir>
+ </contents>
+
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   <package>
+    <name>symfony</name>
+    <channel>pear.symfony-project.com</channel>
+    <min>1.1.0</min>
+    <max>1.4.0</max>
+   </package>
+  </required>
+ </dependencies>
+
+ <phprelease>
+ </phprelease>
+
+ <changelog>
+
+  <release>
+    <version>
+      <release>1.0.0</release>
+      <api>1.0.0</api>
+    </version>
+    <stability>
+     <release>stable</release>
+     <api>stable</api>
+    </stability>
+    <license uri="http://www.symfony-project.org/license">MIT license</license>
+    <date>2009-12-13</date>
+    <license>MIT</license>
+    <notes>
+      * initial release - plugin providing easy use of Sparkline
+    </notes>
+  </release>
+
+ </changelog>
+
+</package>

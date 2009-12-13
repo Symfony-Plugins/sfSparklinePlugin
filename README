@@ -1,0 +1,182 @@
+sfSparklinePlugin
+===============
+
+The `sfSparklinePlugin` is a symfony plugin that provides abstraction for [Sparklines](http://sparkline.org/). Creates chart images on the fly basing on array data.
+
+Example
+-------
+
+Back in the dot-com heyday, you might remember that Cisco, EMC, Sun, and Oracle were nicknamed "the four horsemen of the Internet". You might now say: "companies that ride together, slide together." (_quoted from http://sparkline.org/_)
+
+![example sparkline 1](http://sparkline.org/sparkline-php/samples/CSCO.png "example sparkline 1")
+
+![example sparkline 2](http://sparkline.org/sparkline-php/samples/EMC.png "example sparkline 2")
+
+![example sparkline 3](http://sparkline.org/sparkline-php/samples/JAVA.png "example sparkline 3")
+
+![example sparkline 4](http://sparkline.org/sparkline-php/samples/ORCL.png "example sparkline 4")
+
+Installation
+------------
+
+Install the plugin via the subversion repository:
+
+    $ svn co http://svn.symfony-project.com/plugins/sfSparklinePlugin/trunk plugins/sfSparklinePlugin
+
+from the project root directory or by using the command:
+
+    $ ./symfony plugin:install sfSparklinePlugin
+
+Usage
+-----
+
+Those are several ways you can embed sparkline inside your HTML code:
+
+    [php]
+    <?php
+
+      sfSparkline::createLine( // create sparkline line style
+        '@sparkline_line', // if routing is specified or
+        // 'sfSparklineExample/lineGraphData', // if routing unspecified
+        250, // width of image
+        60, // height of image
+        array( // additional html img attributes
+          'title' => 'sparkline line style',
+          'alt' => 'sparkline alternative text',
+        ));
+
+      sfSparkline::createBar( // create sparkline bar style
+        '@sparkline_bar', // if routing is specified or
+        // 'sfSparklineExample/lineGraphData', // if routing unspecified
+        7, // single bar width
+        3, // bar spacing
+        50, // height of image
+        array(
+          'title' => 'sparkline bar style',
+          'alt' => 'sparkline alternative text',
+        ));
+
+        sfSparkline::createLine(
+          'sfSparklineExample/yahooChart', // action
+          400, // width of image
+          100); // height of image
+
+    ?>
+
+__line Sparkline__
+
+This is how a bar style Sparkline looks like:
+
+![example line](http://sparkline.wikispaces.com/file/view/CSCO3a.png/30045426 "example line")
+
+and this is an example code how it can be done:
+
+    [php]
+    /**
+     * Creates a line graph from random data
+     *
+     * @param sfRequest $request A request object
+     */
+    public function executeLineGraphData(sfWebRequest $request)
+    {
+      // retrieving size parameters
+      $width = $request->getParameter('width');
+      $height = $request->getParameter('height');
+
+      // initializing object
+      $sparkline = new sfSparklineLine();
+
+      // setting size
+      $sparkline->SetYMin(0);
+      $sparkline->SetYMax(25);
+
+      // some random data
+      for( $i = 0; $i < 100; $i++ )
+      {
+        $sparkline->SetData($i, rand(1, $i/4));
+      }
+
+      // additional points on the image
+      $sparkline->SetFeaturePoint(1, 1, 'red', 3, 'start', TEXT_TOP, FONT_3);
+      $sparkline->SetFeaturePoint(50, 15, 'blue', 3);
+
+      // internal sparkline calculation method
+      $sparkline->Render($width, $height);
+
+      // displaying sparkline
+      $sparkline->Output();
+
+      return sfView::NONE;
+    }
+
+__bar Sparkline__
+
+This is how a bar style Sparkline looks like:
+
+![example bar](http://sparkline.wikispaces.com/file/view/deficit.png/30045430 "example bar")
+
+and this is an example code how it can be done:
+
+    [php]
+    /**
+     * Creates a bar graph from random data
+     *
+     * @param sfRequest $request A request object
+     */
+    public function executeBarGraphData()
+    {
+      // Storing the data in an array makes it easy to loop through
+      // when adding later, but it can also be added one value at a time
+      $data = Array(10,20,30,40,50,20,40,50,40,30,20,10,0,-10,-20,-10,10,20);
+
+      // retrieving size parameters
+      $bar = $request->getParameter('bar');
+      $spacing = $request->getParameter('spacing');
+      $height = $request->getParameter('height');
+
+      // Next, create a new instance of Sparkline_Bar
+      $graph = new sfSparklineBar();
+
+      // Set the width of each bar in the graph
+      $graph->setBarWidth($bar);
+
+      // Set the spacing between the bars
+      $graph->setBarSpacing($spacing);
+
+      // Add a color called "mygray" to the available color list
+      $graph->setColorHtml('background', '#EEEEEE');
+
+      // Set the background color to this new color
+      // As of 0.2, if you didn't set the color beforehand,
+      // your background would be black
+      $graph->setColorBackground('background');
+
+      // Loop adding the data
+      foreach ($data as $key => $value) {
+        $graph->setData($key, $value, 'blue');
+      }
+
+      // Draw all necessary objects for our graph
+      $graph->Render($height);
+
+      // Displays the graph by sending a 'Content-type: image/png'
+      // header then outputting the image data
+      echo $graph->Output();
+
+      return sfView::NONE;
+    }
+
+Documentation
+-------------
+
+The official documentation of Sparkline can be found [here](http://sparkline.org/).
+
+Notes
+-----
+
+  * __Multiple inheritance__: as for now, the plugin uses the deprecated symfony 1.0
+    feature called _Mixins_ (_sfMixer_ class from _sfPropelPlugin_). It's just 
+    a temporary solution. Future releases shall provide better ways to achieve
+    multiple inheritance in Symfony.
+
+  * Prerequisite: GD PHP library.
