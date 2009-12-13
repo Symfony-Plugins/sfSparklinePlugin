@@ -1,11 +1,11 @@
-sfSparklineExample:
-  url:   /sfSparklineExample/
-  param: { module: sfSparklineExample, action: index }
-
-sparkline_line:
-  url:   /sparkline_line_example/:width/:height
-  param: { module: sfSparklineExample, action: lineGraphData }
-
-sparkline_bar:
-  url:   /sparkline_bar_example/:bar/:spacing/:height
-  param: { module: sfSparklineExample, action: barGraphData }
+#sfSparklineExample:
+#  url:   /sfSparklineExample/
+#  param: { module: sfSparklineExample, action: index }
+#
+#sparkline_line:
+#  url:   /sparkline_line_example/:width/:height
+#  param: { module: sfSparklineExample, action: lineGraphData }
+#
+#sparkline_bar:
+#  url:   /sparkline_bar_example/:bar/:spacing/:height
+#  param: { module: sfSparklineExample, action: barGraphData }

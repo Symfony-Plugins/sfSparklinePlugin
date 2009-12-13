@@ -3,8 +3,8 @@ sfSparklinePlugin
 
 The `sfSparklinePlugin` is a symfony plugin that provides abstraction for [Sparklines](http://sparkline.org/). Creates chart images on the fly basing on array data.
 
-Example
--------
+Examples
+========
 
 Back in the dot-com heyday, you might remember that Cisco, EMC, Sun, and Oracle were nicknamed "the four horsemen of the Internet". You might now say: "companies that ride together, slide together." (_quoted from http://sparkline.org/_)
 
@@ -17,7 +17,7 @@ Back in the dot-com heyday, you might remember that Cisco, EMC, Sun, and Oracle 
 ![example sparkline 4](http://sparkline.org/sparkline-php/samples/ORCL.png "example sparkline 4")
 
 Installation
-------------
+============
 
 Install the plugin via the subversion repository:
 
@@ -27,8 +27,25 @@ from the project root directory or by using the command:
 
     $ ./symfony plugin:install sfSparklinePlugin
 
+sfSparklineExample module
+=========================
+
+The plugin is provided with a module consisting of sample actions rendering
+sparklines. To use it, _app/config/settings.yml_ shall have
+_sfSparklineExample_ module enabled. Then, go to
+_sfSparklinePlugin/config/routing.yml_ file and uncomment all lines. Finally,
+run:
+
+    $ ./symfony cc
+
+in the command line. Run the example module in your browser:
+
+    http://local.site/sfSparklineExample
+
+in your browser. You shall see 3 different demo sparklines.
+
 Usage
------
+=====
 
 Those are several ways you can embed sparkline inside your HTML code:
 
@@ -63,7 +80,8 @@ Those are several ways you can embed sparkline inside your HTML code:
 
     ?>
 
-__line Sparkline__
+line Sparkline
+--------------
 
 This is how a bar style Sparkline looks like:
 
@@ -109,7 +127,8 @@ and this is an example code how it can be done:
       return sfView::NONE;
     }
 
-__bar Sparkline__
+bar Sparkline
+-------------
 
 This is how a bar style Sparkline looks like:
 
@@ -167,12 +186,12 @@ and this is an example code how it can be done:
     }
 
 Documentation
--------------
+=============
 
 The official documentation of Sparkline can be found [here](http://sparkline.org/).
 
 Notes
------
+=====
 
   * __Multiple inheritance__: as for now, the plugin uses the deprecated symfony 1.0
     feature called _Mixins_ (_sfMixer_ class from _sfPropelPlugin_). It's just 
