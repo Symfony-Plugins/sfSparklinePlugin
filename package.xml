@@ -10,10 +10,10 @@
   <email>tomasz.ducin@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2009-12-13</date>
+ <date>2010-09-01</date>
  <time>11:00:00</time>
  <version>
-   <release>1.0.0</release>
+   <release>1.0.1</release>
    <api>1.0.0</api>
  </version>
  <stability>
@@ -77,7 +77,7 @@
     <name>symfony</name>
     <channel>pear.symfony-project.com</channel>
     <min>1.1.0</min>
-    <max>1.4.0</max>
+    <max>1.5.0</max>
    </package>
   </required>
  </dependencies>
@@ -86,6 +86,23 @@
  </phprelease>
 
  <changelog>
+
+  <release>
+    <version>
+      <release>1.0.1</release>
+      <api>1.0.0</api>
+    </version>
+    <stability>
+     <release>stable</release>
+     <api>stable</api>
+    </stability>
+    <license uri="http://www.symfony-project.org/license">MIT license</license>
+    <date>2010-09-01</date>
+    <license>MIT</license>
+    <notes>
+      * provided support for symfony 1.4.x
+    </notes>
+  </release>
 
   <release>
     <version>
